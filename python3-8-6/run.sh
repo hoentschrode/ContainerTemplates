@@ -14,12 +14,12 @@ podman run \
   --env-file ./.env \
   --user ide \
   --userns=keep-id \
-  -v lht-removal-tool-nvim-cache:/home/${DEFAULT_USER}/.cache/nvim \
-  -v lht-removal-tool-nvim-cache:/home/${DEFAULT_USER}/.local/share/nvim \
-  -v lht-removal-tool-log:/var/log \
+  -v ide-python-3-8-6-nvim-cache:/home/${DEFAULT_USER}/.cache/nvim:Z,U \
+  -v ide-python-3-8-6-nvim-cache:/home/${DEFAULT_USER}/.local/share/nvim:Z,U \
+  -v ide-python-3-8-6-nvim-cache:/var/log \
   -v "${HOST_CODE_PATH}":"${CODE_PATH}" \
   -i \
-  -t localhost/lht-removal-tool:${BUILD_TAG} \
+  -t localhost/ide-python-3.8.6:${BUILD_TAG} \
   zsh
 
 set +x;

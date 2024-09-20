@@ -10,7 +10,7 @@ podman build \
   --build-arg HOST_GID=$HOST_GID \
   --build-arg DEFAULT_USER=$DEFAULT_USER \
   --build-arg SUDO_PASSWORD=$SUDO_PASSWORD \
-  -t lht-removal-tool \
+  -t ide-python-3.8.6 \
   .
 
 set +x;

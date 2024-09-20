@@ -39,6 +39,7 @@ RUN  useradd ${DEFAULT_USER} && \
   echo ${DEFAULT_USER}:${SUDO_PASSWORD} | chpasswd && \
   mkdir /home/${DEFAULT_USER} && \
   mkdir -p /home/${DEFAULT_USER}/.config && \
+  mkdir -p /home/${DEFAULT_USER}/.local && \
   chown -R ${DEFAULT_USER}:${DEFAULT_USER} /home/${DEFAULT_USER} && \
   echo "${DEFAULT_USER} ALL=(ALL) NOPASSWD:ALL" > /etc/sudoers.d/sudoers
 
@@ -81,6 +82,10 @@ RUN cd neovim && \
   make CMAKE_BUILD_TYPE=Release && make CMAKE_BUILD_TYPE=Release CMAKE_INSTALL_PREFIX=/usr/local/nvim install && \
   ln -sf /usr/local/nvim/bin/nvim /usr/local/bin/nvim && \
   rm -rf /tmp/neovim
+
+# NVM
+USER $DEFAULT_USER
+RUN bash -c "$(curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.1/install.sh)"
 
 # Cleanup
 USER root
